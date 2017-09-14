@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ICOlogs</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="like_ico">ICO вам нравятся</string>
+    <string name="like_project">Вам нравится проект</string>
+    <string name="not_like_project">Вы еще не лайкнули проект</string>
+    <string name="active_ico">Сейчас проходят ICO</string>
+    <string name="item_active_ico">ICO сейчас проходит</string>
+    <string name="upcoming_ico">Скоро начнутся ICO</string>
+    <string name="item_upcoming_ico">ICO cкоро начнется</string>
+    <string name="recent_ico">Завершившиеся ICO</string>
+    <string name="days">ДНЕЙ</string>
+    <string name="start_day">Дата начала:</string>
+    <string name="end_day">Дата окончания:</string>
+    <string name="end_time">Время окончания:</string>
+    <string name="symbol">Символ:</string>
+    <string name="token_price">Цена токена:</string>
+    <string name="need_money">Нужно денег:</string>
+    <string name="invest">Можно инвестировать:</string>
+    <string name="white_paper">Скачать White Paper</string>
+    <string name="news">Новости об ICO проекте</string>
+    <string name="support">Написать администрации</string>
+    <string name="support_title">Написать в поддержку</string>
+    <string name="website">Перейти на сайт проекта</string>
+    <string name="support_descript">Если вы заметили опечатку или недостоверную информацию, у вас есть предложение о добавлении ICO проекта или вы хотите связаться с администрацией приложения, то вы можете написать нам.</string>
+    <string name="support_descript2">Заполните форму ниже, укажите причину и отправьте сообщение нам. Обычно мы отвечаем в течение недели.</string>
+    <string name="support_field1">Как к вам обращаться?</string>
+    <string name="support_field2">Введите ваш емайл адрес</string>
+    <string name="support_field3">Введите ваше сообщение</string>
+    <string name="support_send">Отправить</string>
+    <string name="dialog_title">Нравится наше приложение?</string>
+    <string name="dialog_message">Ваши оценки и отзывы важны для нашей команды, поддержите нас!</string>
+    <string name="dialog_pos_btn">Оценить</string>
+    <string name="dialog_neg_btn">Позже</string>
+
+    <string name="january">Января</string>
+    <string name="february">Февраля</string>
+    <string name="march">Марта</string>
+    <string name="april">Апреля</string>
+    <string name="may">Мая</string>
+    <string name="june">Июня</string>
+    <string name="july">Июля</string>
+    <string name="august">Августа</string>
+    <string name="september">Сентября</string>
+    <string name="october">Октября</string>
+    <string name="november">Ноября</string>
+    <string name="december">Декабря</string>
+
+</resources>

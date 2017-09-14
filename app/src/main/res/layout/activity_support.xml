@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlCustomBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAccent"
+            android:padding="@dimen/space">
+
+            <ImageView
+                android:id="@+id/btBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/support_title"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/toolbar_text_size" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDescript"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlCustomBar"
+            android:padding="@dimen/space">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/support_descript2"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/vSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rlDescript"
+            android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vSeparator"
+            android:padding="@dimen/space">
+
+            <RelativeLayout
+                android:padding="@dimen/space"
+                android:id="@+id/rlName"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@drawable/back_edit">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:background="#00000000"
+                    android:textSize="14sp"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/support_field1" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:padding="@dimen/space"
+                android:layout_marginTop="@dimen/space"
+                android:layout_below="@+id/rlName"
+                android:id="@+id/rlEmail"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@drawable/back_edit">
+
+                <EditText
+                    android:background="#00000000"
+                    android:textSize="14sp"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/support_field2" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:padding="@dimen/space"
+                android:layout_marginTop="@dimen/space"
+                android:layout_below="@+id/rlEmail"
+                android:id="@+id/rlMessage"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:background="@drawable/back_edit">
+
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:background="#00000000"
+                    android:textSize="14sp"
+                    android:inputType="textImeMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/support_field3" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/space"
+                android:layout_below="@id/rlMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/back_btn"
+                    android:text="@string/support_send"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

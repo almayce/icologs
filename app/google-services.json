@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1087927933466",
+    "firebase_url": "https://icologs-dd648.firebaseio.com",
+    "project_id": "icologs-dd648",
+    "storage_bucket": "icologs-dd648.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087927933466:android:960d58a737fd6899",
+        "android_client_info": {
+          "package_name": "io.almayce.dev.icologs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087927933466-ksdj603u7nt6foh6bf9heuj1g1joqsp3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.almayce.dev.icologs",
+            "certificate_hash": "f83b038d775b805beb619f278a86c1a24d04e84e"
+          }
+        },
+        {
+          "client_id": "1087927933466-c0fvfm3jr352lq45cgv757lqngnpl81u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAqO8x7oFoKq3yKmM_GAGODsKibYwewf0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087927933466-c0fvfm3jr352lq45cgv757lqngnpl81u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
