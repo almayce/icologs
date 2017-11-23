@@ -61,6 +61,11 @@
                     android:id="@+id/rlLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="#E0E0E0">
+                    </View>
 
                     <TextView
                         android:textAlignment="center"
@@ -74,26 +79,74 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="5dp"
                         android:layout_alignParentBottom="true"
-                        android:background="@android:color/darker_gray">
+                        android:background="#E0E0E0">
                     </View>
 
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:paddingRight="@dimen/half_space"
+                    android:layout_below="@id/rlLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <RelativeLayout
+                        android:visibility="invisible"
+                        android:id="@+id/rlPreSale"
+                        android:paddingRight="@dimen/half_space"
+                        android:paddingEnd="@dimen/half_space"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:paddingRight="@dimen/item_indicator_padding"
+                            android:paddingLeft="@dimen/item_indicator_padding"
+                            android:background="@color/item_indicator_background"
+                            android:fontFamily="sans-serif-light"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pre-sale"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/item_indicator_text_size"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:visibility="invisible"
+                        android:id="@+id/rlNew"
+                        android:paddingRight="@dimen/half_space"
+                        android:paddingEnd="@dimen/half_space"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:paddingRight="@dimen/item_indicator_padding"
+                            android:paddingLeft="@dimen/item_indicator_padding"
+                            android:background="@color/item_indicator_background"
+                            android:fontFamily="sans-serif-light"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="new"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/item_indicator_text_size"/>
+                    </RelativeLayout>
+                </LinearLayout>
                 <RelativeLayout
                     android:id="@+id/rlStatus"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:layout_below="@id/rlLabel">
-
                     <TextView
                         android:id="@+id/tvStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/space"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="@dimen/space"
                         android:text="Статус"
                         android:textSize="20sp" />
 
@@ -197,11 +250,9 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="5dp"
                         android:layout_alignParentBottom="true"
-                        android:background="@android:color/darker_gray">
-
-
+                        android:background="#E0E0E0">
                     </View>
 
                 </RelativeLayout>
@@ -211,7 +262,7 @@
                     android:layout_centerHorizontal="true"
                     android:id="@+id/rlEnd"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:layout_below="@id/rlLabel">
 
                     <TextView
@@ -225,12 +276,11 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="5dp"
                         android:layout_alignParentBottom="true"
-                        android:background="@android:color/darker_gray">
-
-
+                        android:background="#E0E0E0">
                     </View>
+
 
                 </RelativeLayout>
 
@@ -266,13 +316,43 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:text="@string/like_project" />
+
                 </RelativeLayout>
+
+                <View
+                    android:id="@+id/vSeparatorPlayer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/rlPin"
+                    android:background="#E0E0E0">
+                </View>
+
+                <LinearLayout
+                    android:layout_below="@+id/vSeparatorPlayer1"
+                    android:id="@+id/llYouTubePlayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+                        android:id="@+id/youTubePlayerSupportFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/vSeparatorPlayer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/llYouTubePlayer"
+                    android:background="#E0E0E0">
+                </View>
 
                 <LinearLayout
                     android:id="@+id/llDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rlPin"
+                    android:layout_below="@+id/vSeparatorPlayer2"
                     android:orientation="vertical"
                     android:padding="@dimen/space">
 
@@ -504,25 +584,36 @@
 
                     </TableRow>
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_above="@+id/rlLink"
+                    android:background="#E0E0E0">
+                </View>
                 <RelativeLayout
                     android:id="@+id/rlLink"
-                    android:background="#C4C4C4"
+                    android:background="#a5f2c94c"
                     android:layout_below="@+id/llDetails"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
                     <TextView
                         android:layout_centerInParent="true"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/website"/>
                 </RelativeLayout>
-
+                <View
+                    android:id="@+id/vLinkSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/rlLink"
+                    android:background="#E0E0E0">
+                </View>
                 <RelativeLayout
                     android:id="@+id/rlWhitePaper"
-                    android:layout_below="@+id/rlLink"
+                    android:layout_below="@+id/vLinkSeparator"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
 
@@ -530,8 +621,8 @@
                         android:layout_margin="@dimen/space"
                         android:layout_centerVertical="true"
                         android:id="@+id/ic_pdf"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_pdf"/>
                     <TextView
                         android:layout_toRightOf="@+id/ic_pdf"
@@ -541,21 +632,19 @@
                         android:layout_height="wrap_content"
                         android:text="@string/white_paper"/>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@android:color/darker_gray">
 
-                    </View>
                 </RelativeLayout>
-
-
                 <RelativeLayout
                     android:layout_below="@+id/rlWhitePaper"
                     android:id="@+id/rlNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="#E0E0E0">
+                    </View>
 
                     <TextView
                         android:layout_margin="@dimen/space"
@@ -573,7 +662,7 @@
                         android:layout_below="@+id/tvNewsTitle"
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
-                        android:background="@color/colorAccent">
+                        android:background="@android:color/white">
 
                     </View>
 
@@ -587,19 +676,19 @@
 
                     </GridView>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@android:color/darker_gray">
 
-                    </View>
 
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:padding="@dimen/space"
+                <View
+                    android:id="@+id/vHugeSeparator"
                     android:layout_below="@+id/rlNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#E0E0E0">
+                </View>
+                <RelativeLayout
+                    android:layout_below="@+id/vHugeSeparator"
+                    android:padding="@dimen/space"
                     android:id="@+id/rlSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

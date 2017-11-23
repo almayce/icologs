@@ -6,13 +6,13 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "io.almayce.dev.icologs"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.2"
+        versionCode 8
+        versionName "1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -31,6 +31,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile "com.android.support:support-core-utils:26.+"
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
 
@@ -38,6 +39,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:11.0.4'
     compile 'com.google.firebase:firebase-database:11.0.4'
     compile 'com.google.firebase:firebase-storage:11.0.4'
+
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 
     // moxy
     compile 'com.arello-mobile:moxy:1.5.3'

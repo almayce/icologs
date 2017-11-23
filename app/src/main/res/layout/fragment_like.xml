@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="io.almayce.dev.icologs.view.fragment.PlaceholderFragment">
@@ -33,6 +34,7 @@
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
+            android:background="@color/background"
             android:id="@+id/rvContent"
             android:layout_below="@+id/rlLabel"
             android:layout_width="match_parent"

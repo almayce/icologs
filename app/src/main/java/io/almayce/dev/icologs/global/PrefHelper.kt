@@ -11,10 +11,12 @@ import io.reactivex.subjects.PublishSubject
 object PrefHelper {
     private lateinit var prefPin: SharedPreferences
     private lateinit var prefRate: SharedPreferences
+
     val onPinned = PublishSubject.create<Boolean>()
     var set = HashSet<String>()
-    private val TAG_PINNED = "pinned"
-    private val TAG_RATED = "rated"
+
+    private const val TAG_PINNED = "pinned"
+    private const val TAG_RATED = "rated"
 
     fun initPref(context: Context) {
         prefPin = context.getSharedPreferences(TAG_PINNED, Context.MODE_PRIVATE)

@@ -7,19 +7,27 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import io.almayce.dev.icologs.R
 import io.almayce.dev.icologs.databinding.ActivityItemBinding
 import io.almayce.dev.icologs.global.PrefHelper
 import io.almayce.dev.icologs.presenter.ItemPresenter
-import io.almayce.dev.icologs.view.adapter.GridViewAdapter
+import io.almayce.dev.icologs.adapter.GridViewAdapter
+import kotlinx.android.synthetic.main.activity_item.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by almayce on 29.08.17.
  */
 class ItemActivity : MvpAppCompatActivity(), ItemView {
+
 
     @InjectPresenter
     lateinit var pr: ItemPresenter
@@ -50,7 +58,56 @@ class ItemActivity : MvpAppCompatActivity(), ItemView {
         bn.rlLink.setOnClickListener({ goTo(intent.getStringExtra("link")) })
         bn.rlWhitePaper.setOnClickListener({ goTo(intent.getStringExtra("whitePaperLink")) })
         bn.tvSupport.setOnClickListener({ startEmailIntent() })
+        bn.rlPreSale.visibility = if (isPreSale(intent.getStringExtra("preSaleDate"))) View.VISIBLE else View.INVISIBLE
+        bn.rlPreSale.layoutParams.width = if (isPreSale(intent.getStringExtra("preSaleDate"))) ViewGroup.LayoutParams.WRAP_CONTENT else 0
+        bn.rlNew.visibility = if (isNew(intent.getStringExtra("newDate"))) View.VISIBLE else View.INVISIBLE
+        bn.rlNew.layoutParams.width = if (isNew(intent.getStringExtra("newDate"))) ViewGroup.LayoutParams.WRAP_CONTENT else 0
+
+        val youTubeUrl: String? = intent.getStringExtra("youTubeUrl")
+        println("!!!" + youTubeUrl)
+        if (youTubeUrl != null)
+            if (youTubeUrl.isNotEmpty())
+                try {
+                    initPlayer(youTubeUrl.split("v=")[1])
+                } catch (e: IndexOutOfBoundsException) {
+                    playerHide()
+                }
+            else playerHide()
+        else playerHide()
     }
+
+    private fun playerHide() {
+        val layoutParamsHide = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+        youTubePlayerSupportFragment.layoutParams = layoutParamsHide
+        youTubePlayerSupportFragment.visibility = View.INVISIBLE
+        vSeparatorPlayer2.visibility = View.INVISIBLE
+    }
+
+    fun initPlayer(url: String) {
+        val playerFragment = YouTubePlayerSupportFragment.newInstance()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.youTubePlayerSupportFragment, playerFragment)
+                .commit()
+
+        playerFragment.initialize(getString(R.string.api_key), object : YouTubePlayer.OnInitializedListener {
+
+            override fun onInitializationSuccess(arg0: YouTubePlayer.Provider, youTubePlayer: YouTubePlayer, b: Boolean) {
+                youTubePlayer.cueVideo(url)
+
+            }
+
+            override fun onInitializationFailure(arg0: YouTubePlayer.Provider, arg1: YouTubeInitializationResult) {
+                playerHide()
+            }
+        })
+    }
+
+    fun isPreSale(millis: String): Boolean =
+            millis.toLong() > 0
+//                    && System.currentTimeMillis() < millis.toLong()
+
+    fun isNew(millis: String): Boolean =
+            millis.toLong() > 0 && TimeUnit.HOURS.convert(System.currentTimeMillis() - millis.toLong(), TimeUnit.MILLISECONDS).toInt() < 72
 
     fun goTo(link: String) {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
@@ -58,7 +115,7 @@ class ItemActivity : MvpAppCompatActivity(), ItemView {
         if (!link.isNullOrEmpty())
             try {
                 startActivity(browserIntent)
-            } catch(e: ActivityNotFoundException) {
+            } catch (e: ActivityNotFoundException) {
                 e.printStackTrace()
                 Toast.makeText(this, "Неверная ссылка", Toast.LENGTH_SHORT).show()
             }
@@ -142,7 +199,9 @@ class ItemActivity : MvpAppCompatActivity(), ItemView {
     }
 
     fun convertDays(days: String): String {
-        var target = (days.toInt() - 1).toString()
+        var target = "00"
+        if (days.toInt() > 0)
+            target = (days.toInt() - 1).toString()
         if (target.length < 2)
             return "0$target"
         return target
@@ -164,5 +223,4 @@ class ItemActivity : MvpAppCompatActivity(), ItemView {
                         "Из приложения app.icologs.com.")
         startActivity(Intent.createChooser(sharingIntent, "Send via:"))
     }
-
 }

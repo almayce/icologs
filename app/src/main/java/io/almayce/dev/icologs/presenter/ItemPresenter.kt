@@ -36,8 +36,7 @@ class ItemPresenter : MvpPresenter<ItemView>() {
     fun init() {
         PrefHelper.onPinned
                 .compose(SchedulersTransformer())
-                .subscribe({
-                    t ->
+                .subscribe({ t ->
                     if (t) viewState.pin()
                     else viewState.unpin()
                 })
@@ -49,40 +48,53 @@ class ItemPresenter : MvpPresenter<ItemView>() {
         var e = endDate.toLong()
 
         viewState.setDate(
-                sdfDate.format(s),
-                sdfDate.format(e),
-                sdfTime.format(s),
-                sdfTime.format(e))
+                sdfDate.format(convert(s)),
+                sdfDate.format(convert(e)),
+                sdfTime.format(convert(s)),
+                sdfTime.format(convert(e)))
 
-        var sOffSet = utc.getOffset(s)
-        var eOffSet = utc.getOffset(e)
-
-        var calStart = Calendar.getInstance(gmt)
-        calStart.timeInMillis = s
-        calStart.add(Calendar.MILLISECOND, sOffSet)
-
-        var calEnd = Calendar.getInstance(gmt)
-        calEnd.timeInMillis = e
-        calEnd.add(Calendar.MILLISECOND, eOffSet)
+//        var sOffSet = utc.getOffset(s)
+//        var eOffSet = utc.getOffset(e)
+//
+//        var calStart = Calendar.getInstance(gmt)
+//        calStart.timeInMillis = s
+//        calStart.add(Calendar.MILLISECOND, sOffSet)
+//
+//        var calEnd = Calendar.getInstance(gmt)
+//        calEnd.timeInMillis = e
+//        calEnd.add(Calendar.MILLISECOND, eOffSet)
 
         when {
-            status == "now" -> launchTimer(calEnd)
-            status == "up" -> launchTimer(calStart)
+            status == "now" -> launchTimer(e)
+            status == "up" -> launchTimer(s)
         }
     }
 
-    fun launchTimer(cal: Calendar) {
+    fun convert(millis: Long): Long {
+        val calCurrent = Calendar.getInstance()
+        calCurrent.timeInMillis = millis
+        calCurrent.add(Calendar.MILLISECOND,
+                calCurrent.timeZone.getOffset(calCurrent.timeInMillis))
+        return calCurrent.time.time
+    }
+
+    fun launchTimer(millis: Long) {
         launch(UI) {
             while (true) {
-                val calCurrent = Calendar.getInstance()
-                calCurrent.add(Calendar.MILLISECOND,
-                        calCurrent.timeZone.getOffset(calCurrent.timeInMillis))
-                val dateCurrent = calCurrent.time
+//                val calCurrent = Calendar.getInstance()
+//                calCurrent.add(Calendar.MILLISECOND,
+//                        calCurrent.timeZone.getOffset(calCurrent.timeInMillis))
+//                val dateCurrent = calCurrent.time
 
-                val t = cal.timeInMillis - dateCurrent.time
-                viewState.setTimer(sdfTimer.format(t)
-                        .split(" ")
-                        .toTypedArray())
+                val t = millis - System.currentTimeMillis()
+
+                if (t < 0)
+                    viewState.setTimer(arrayOf("00", "00", "00", "00"))
+                else
+                    viewState.setTimer(sdfTimer.format(t)
+                            .split(" ")
+                            .toTypedArray())
+
                 delay(1, TimeUnit.SECONDS)
             }
         }

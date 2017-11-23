@@ -7,4 +7,7 @@
     <dimen name="toolbar_text_size">20sp</dimen>
     <dimen name="space">8dp</dimen>
     <dimen name="half_space">4dp</dimen>
+    <dimen name="item_indicator_text_size">12sp</dimen>
+    <dimen name="item_indicator_padding">12dp</dimen>
+
 </resources>

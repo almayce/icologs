@@ -17,6 +17,10 @@ class ICO {
     var link: String = ""
     var whitePaperLink: String = ""
     var news= ArrayList<String?>()
+    var preSaleDate = "0"
+    var newDate: String = "0"
+    var fix: String = "0"
+    var youTubeUrl: String = ""
 }
 
 

@@ -4,14 +4,16 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#F2C94C</color>
     <color name="background_material_light">#ffffff</color>
+    <color name="background">#F2F2F2</color>
 
 
-
+    <color name="accent_trans">#a5f2c94c</color>
     <color name="status_now">#707AF1</color>
     <color name="status_up">#F2994A</color>
     <color name="status_end">#9E9E9E</color>
     <color name="primary_text_default_material_light">#fe000000</color>
     <color name="primary_text_material_light">#000000</color>
+    <color name="item_indicator_background">#F2C94C</color>
 
 
 </resources>
